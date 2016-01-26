@@ -2,11 +2,14 @@ if !has('python')
     echo 'Error: +python required'
     finish
 endif
+
 if !exists('g:googurl_api_key')
     let g:googurl_api_key = ''
 endif
 
-map <leader>gu :python googurl()<CR>
+if !exists('g:googurl_disable_default_mapping')
+    map <leader>gu :python googurl()<CR>
+endif
 
 python << EOF
 import vim
